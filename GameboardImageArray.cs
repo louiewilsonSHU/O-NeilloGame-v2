@@ -101,7 +101,26 @@ namespace GameboardGUI
                 }
             }
         }
+
+
+        /////// added this
+        public void destroy()
+        {
+            for (int r = 0; r < _boardRows; r++)
+            {
+                for (int c = 0; c < _boardCols; c++)
+                {
+                    _containingForm.Controls.Remove(_boardTiles[r, c]);
+                    _boardTiles[r, c].Dispose();
+                }
+            }
+        }
+        ///////
         
+
+
+
+
         /// <summary>
         /// Updates the Game Board display based on the gameboard state data array parameter
         /// </summary>
