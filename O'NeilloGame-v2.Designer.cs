@@ -92,21 +92,21 @@
             // newGameToolStripMenuItem
             // 
             newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            newGameToolStripMenuItem.Size = new Size(147, 22);
+            newGameToolStripMenuItem.Size = new Size(180, 22);
             newGameToolStripMenuItem.Text = "New Game";
             newGameToolStripMenuItem.Click += newGameToolStripMenuItem_Click;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(147, 22);
+            exitToolStripMenuItem.Size = new Size(180, 22);
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
             // saveGameToolStripMenuItem
             // 
             saveGameToolStripMenuItem.Name = "saveGameToolStripMenuItem";
-            saveGameToolStripMenuItem.Size = new Size(147, 22);
+            saveGameToolStripMenuItem.Size = new Size(180, 22);
             saveGameToolStripMenuItem.Text = "Save Game";
             saveGameToolStripMenuItem.Click += saveGameToolStripMenuItem_Click;
             // 
@@ -114,7 +114,7 @@
             // 
             restoreGameToolStripMenuItem.Enabled = false;
             restoreGameToolStripMenuItem.Name = "restoreGameToolStripMenuItem";
-            restoreGameToolStripMenuItem.Size = new Size(147, 22);
+            restoreGameToolStripMenuItem.Size = new Size(180, 22);
             restoreGameToolStripMenuItem.Text = "Restore Game";
             restoreGameToolStripMenuItem.Click += restoreGameToolStripMenuItem_Click;
             // 
@@ -131,7 +131,7 @@
             speechToolStripMenuItem.Name = "speechToolStripMenuItem";
             speechToolStripMenuItem.Size = new Size(180, 22);
             speechToolStripMenuItem.Text = "Speech";
-            speechToolStripMenuItem.Click += speechToolStripMenuItem_CheckStateChanged;
+            speechToolStripMenuItem.Click += speechToolStripMenuItem_Click;
             // 
             // informationPanelToolStripMenuItem
             // 

@@ -104,6 +104,10 @@ namespace GameboardGUI
 
 
         /////// added this
+        /// <summary>
+        /// Destructor implemented as a method. This is used when loading a new game or restoring a game, as a new GameLogic instance is created each time,
+        /// requiring a new set of tiles on the form
+        /// </summary>
         public void destroy()
         {
             for (int r = 0; r < _boardRows; r++)

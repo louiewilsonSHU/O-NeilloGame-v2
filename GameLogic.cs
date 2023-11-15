@@ -421,7 +421,7 @@ namespace O_NeilloGame_v2
         /// </summary>
         /// <param name="player1NumberOfTokens">Player 1 number of tokens</param>
         /// <param name="player2NumberOfTokens">Player 2 number of tokens</param>
-        internal void gameOver(int player1NumberOfTokens, int player2NumberOfTokens)
+         internal void gameOver(int player1NumberOfTokens, int player2NumberOfTokens)
         {
             //set gameInProgress to false
             gameInProgress = false;

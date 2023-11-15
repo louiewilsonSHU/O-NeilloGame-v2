@@ -202,7 +202,7 @@ namespace O_NeilloGame_v2
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void speechToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
+        private void speechToolStripMenuItem_Click(object sender, EventArgs e)
         {
             toggleSpeech();
 
@@ -445,7 +445,7 @@ namespace O_NeilloGame_v2
             if (applicationRule.Split("speech:")[1].Split("~")[0] == "true" && !game.SpeechEnabled) { toggleSpeech(); }
             else if (applicationRule.Split("speech:")[1].Split("~")[0] == "false" && game.SpeechEnabled) { toggleSpeech(); }
             if (applicationRule.Split("informationPanel:")[1].Split("~")[0] == "false" && labelGameInformation.Visible) { toggleInformationPanel(); }
-            else if (applicationRule.Split("informationPanel:")[1].Split("~")[0] == "true" && !labelGameInformation.Visible) { toggleInformationPanel(); toggleInformationPanel();}
+            else if (applicationRule.Split("informationPanel:")[1].Split("~")[0] == "true" && !labelGameInformation.Visible) { toggleInformationPanel(); toggleInformationPanel(); }
         }
 
         /// <summary>
