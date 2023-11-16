@@ -92,21 +92,21 @@
             // newGameToolStripMenuItem
             // 
             newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            newGameToolStripMenuItem.Size = new Size(180, 22);
+            newGameToolStripMenuItem.Size = new Size(147, 22);
             newGameToolStripMenuItem.Text = "New Game";
             newGameToolStripMenuItem.Click += newGameToolStripMenuItem_Click;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(180, 22);
+            exitToolStripMenuItem.Size = new Size(147, 22);
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
             // saveGameToolStripMenuItem
             // 
             saveGameToolStripMenuItem.Name = "saveGameToolStripMenuItem";
-            saveGameToolStripMenuItem.Size = new Size(180, 22);
+            saveGameToolStripMenuItem.Size = new Size(147, 22);
             saveGameToolStripMenuItem.Text = "Save Game";
             saveGameToolStripMenuItem.Click += saveGameToolStripMenuItem_Click;
             // 
@@ -114,7 +114,7 @@
             // 
             restoreGameToolStripMenuItem.Enabled = false;
             restoreGameToolStripMenuItem.Name = "restoreGameToolStripMenuItem";
-            restoreGameToolStripMenuItem.Size = new Size(180, 22);
+            restoreGameToolStripMenuItem.Size = new Size(147, 22);
             restoreGameToolStripMenuItem.Text = "Restore Game";
             restoreGameToolStripMenuItem.Click += restoreGameToolStripMenuItem_Click;
             // 
@@ -358,6 +358,8 @@
             Controls.Add(labelGameInformation);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
+            MaximumSize = new Size(816, 489);
+            MinimumSize = new Size(816, 489);
             Name = "O_Neill_Game_Window";
             Text = "O'Neill Game";
             menuStrip1.ResumeLayout(false);
