@@ -27,7 +27,7 @@ namespace O_NeilloGame_v2
             InitializeComponent();
 
             //if there is a game save already saved, then enable the "Restore Game" menu option
-            if (File.ReadAllLines("./gamesaves/game_data.json").Length > 2) { restoreGameToolStripMenuItem.Enabled = true; }
+            if (File.ReadAllLines("./gamesaves/game_data.json").Length == 2) { restoreGameToolStripMenuItem.Enabled = true; }
         }
 
         ///<summary> Event handler for if a game board tile was clicked </summary>
