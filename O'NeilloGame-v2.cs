@@ -239,7 +239,7 @@ namespace O_NeilloGame_v2
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void informationPanelToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
+        private void informationPanelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             toggleInformationPanel();
 

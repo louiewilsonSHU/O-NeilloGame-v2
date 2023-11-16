@@ -141,7 +141,7 @@
             informationPanelToolStripMenuItem.Name = "informationPanelToolStripMenuItem";
             informationPanelToolStripMenuItem.Size = new Size(180, 22);
             informationPanelToolStripMenuItem.Text = "Information Panel";
-            informationPanelToolStripMenuItem.Click += informationPanelToolStripMenuItem_CheckStateChanged;
+            informationPanelToolStripMenuItem.Click += informationPanelToolStripMenuItem_Click;
             // 
             // helpToolStripMenuItem
             // 
