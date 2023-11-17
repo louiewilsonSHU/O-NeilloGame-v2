@@ -553,7 +553,7 @@ namespace O_NeilloGame_v2
         {
             //destroy the current game class if there is one instantiated
             try
-            { if (game.GameInProgress) { game.gameBoard.destroy(); } }
+            { game.gameBoard.destroy(); }
             catch (NullReferenceException) { }
 
             //create new GameLogic instance, assign to game variable
