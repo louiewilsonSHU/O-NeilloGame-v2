@@ -32,6 +32,7 @@ namespace O_NeilloGame_v2
 
         public int[,] gameBoardData;
 
+        [JsonIgnore]
         //declare the readonly image path
         public readonly string imagePath;
 
