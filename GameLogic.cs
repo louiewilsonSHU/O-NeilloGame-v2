@@ -7,17 +7,6 @@ namespace O_NeilloGame_v2
 {
     public class GameLogic
     {
-        //declare global Boolean flags used in the game associated with the UI
-        private bool speechEnabled; //speech, default is off
-
-        [JsonIgnore]
-        public bool SpeechEnabled { get { return this.speechEnabled; } set { this.speechEnabled = value; } }
-
-        private bool informationPanelEnabled; //information panel, default is on
-
-        [JsonIgnore]
-        public bool InformationPanelEnabled { get { return this.informationPanelEnabled; } set { this.informationPanelEnabled = value; } }
-
         private bool gameInProgress; //game in progress, default is "no"
         public bool GameInProgress { get { return this.gameInProgress; } set { this.gameInProgress = value; } }
 
@@ -28,6 +17,7 @@ namespace O_NeilloGame_v2
         public int Player { get { return this.player; } set { this.player = value; } }
 
         //create a game board and a 2-dimensional array to store the game data
+        [JsonIgnore]
         public GameboardImageArray gameBoard;
 
         public int[,] gameBoardData;
@@ -46,8 +36,6 @@ namespace O_NeilloGame_v2
         public GameLogic()
         {
             //assign default values to Boolean flags and other variables
-            SpeechEnabled = false;
-            InformationPanelEnabled = true;
             GameInProgress = true;
             Player = 0;
             gameBoardData = new int[8, 8];
@@ -64,9 +52,6 @@ namespace O_NeilloGame_v2
         /// <returns>true --> illegal move, false --> legal move</returns>
         internal static bool checkForIllegalMove(int[,] board, int row, int column, int player)
         {
-            //first, check if there is already a non-10 tile there - not needed anymore
-            //if (!(board[row, column] == 10)) { return true; }
-
             //take a note of the inverse of the current player, i.e., the player who did not make the move
             int inversePlayer = player == 1 ? 0 : 1;
 

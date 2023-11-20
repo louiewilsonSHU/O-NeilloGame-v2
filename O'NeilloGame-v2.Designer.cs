@@ -129,7 +129,7 @@
             // 
             speechToolStripMenuItem.CheckOnClick = true;
             speechToolStripMenuItem.Name = "speechToolStripMenuItem";
-            speechToolStripMenuItem.Size = new Size(180, 22);
+            speechToolStripMenuItem.Size = new Size(169, 22);
             speechToolStripMenuItem.Text = "Speech";
             speechToolStripMenuItem.Click += speechToolStripMenuItem_Click;
             // 
@@ -139,7 +139,7 @@
             informationPanelToolStripMenuItem.CheckOnClick = true;
             informationPanelToolStripMenuItem.CheckState = CheckState.Checked;
             informationPanelToolStripMenuItem.Name = "informationPanelToolStripMenuItem";
-            informationPanelToolStripMenuItem.Size = new Size(180, 22);
+            informationPanelToolStripMenuItem.Size = new Size(169, 22);
             informationPanelToolStripMenuItem.Text = "Information Panel";
             informationPanelToolStripMenuItem.Click += informationPanelToolStripMenuItem_Click;
             // 
@@ -357,11 +357,15 @@
             Controls.Add(labelSpeaking);
             Controls.Add(labelGameInformation);
             Controls.Add(menuStrip1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
+            MaximizeBox = false;
             MaximumSize = new Size(816, 489);
+            MinimizeBox = false;
             MinimumSize = new Size(816, 489);
             Name = "O_Neill_Game_Window";
             Text = "O'Neill Game";
+            Load += O_Neill_Game_Window_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxPlayer1).EndInit();

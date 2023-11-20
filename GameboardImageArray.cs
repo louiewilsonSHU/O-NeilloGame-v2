@@ -17,8 +17,12 @@
  * an object as the first parameter and an EventArgs as the second parameter.
 */
 
+using Newtonsoft.Json;
+
 namespace GameboardGUI
 {
+    //do not include these properties in the JSON serialised game saves
+    [JsonObject(MemberSerialization.OptIn)]
     public class GameboardImageArray : UserControl
     {
         /// <summary>

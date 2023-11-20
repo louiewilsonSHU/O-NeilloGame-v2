@@ -10,6 +10,10 @@ namespace O_NeilloGame_v2
 {
     public partial class O_Neill_Game_Window : Form
     {
+        //declare global Boolean flag used in the game associated with the speech application rule
+        private bool speechEnabled; //speech, default is off
+        public bool SpeechEnabled { get { return this.speechEnabled; } set { this.speechEnabled = value; } }
+
         //declare application rule variable, assign saved string
         private string applicationRule = File.ReadAllLines("./gamesaves/game_data.json")[0];
 
@@ -47,7 +51,7 @@ namespace O_NeilloGame_v2
             }
             else
             {
-                if (game.SpeechEnabled) { say($"Player {(game.Player == 0 ? 2 : 1)} illegally tried to place a tile at row {row} column {column}"); }
+                if (SpeechEnabled) { say($"Player {(game.Player == 0 ? 2 : 1)} illegally tried to place a tile at row {row} column {column}"); }
                 MessageBox.Show("Illegal move");
 
                 //reset tile to its original state
@@ -62,7 +66,7 @@ namespace O_NeilloGame_v2
 
             if (!GameLogic.checkForIllegalMove(game.gameBoardData, row, column, game.Player))
             {
-                if (game.SpeechEnabled) { say($"Player {(game.Player == 0 ? 2 : 1)} placed a tile at row {row} column {column}"); }
+                if (SpeechEnabled) { say($"Player {(game.Player == 0 ? 2 : 1)} placed a tile at row {row} column {column}"); }
 
                 //check if any tiles need flipping and flip them
                 List<List<int>> tilesToFlip = GameLogic.processMove(game.gameBoardData, row, column, game.Player);
@@ -80,7 +84,7 @@ namespace O_NeilloGame_v2
                 //next player, output if the next player has no valid moves
                 if (invertPlayer() == -1)
                 {
-                    if (game.SpeechEnabled) { say($"Player {(game.Player == 0 ? 2 : 1)} has no valid moves"); }
+                    if (SpeechEnabled) { say($"Player {(game.Player == 0 ? 2 : 1)} has no valid moves"); }
                     MessageBox.Show($"Player {(game.Player == 0 ? 2 : 1)} has no valid moves");
 
                     //invert player again, and check if the next player has no valid moves
@@ -94,7 +98,7 @@ namespace O_NeilloGame_v2
             }
             else
             {
-                if (game.SpeechEnabled) { say($"Player {(game.Player == 0 ? 2 : 1)} illegally tried to place a tile at row {row} column {column}"); }
+                if (SpeechEnabled) { say($"Player {(game.Player == 0 ? 2 : 1)} illegally tried to place a tile at row {row} column {column}"); }
                 MessageBox.Show("Illegal move");
 
                 //reset tile to its original state
@@ -208,7 +212,7 @@ namespace O_NeilloGame_v2
 
             try
             {
-                if (game.SpeechEnabled)
+                if (SpeechEnabled)
                 {
                     File.WriteAllText("./gamesaves/game_data.json", File.ReadAllText("./gamesaves/game_data.json").Replace("~speech:false~", "~speech:true~"));
                 }
@@ -227,8 +231,8 @@ namespace O_NeilloGame_v2
         {
             try
             {
-                if (game.SpeechEnabled) { game.SpeechEnabled = false; speechToolStripMenuItem.Checked = false; say("Speech disabled"); }
-                else { game.SpeechEnabled = true; speechToolStripMenuItem.Checked = true; say($"Speech enabled. Player {(game.Player == 0 ? 2 : 1)} to play."); }
+                if (SpeechEnabled) { SpeechEnabled = false; speechToolStripMenuItem.Checked = false; say("Speech disabled"); }
+                else { SpeechEnabled = true; speechToolStripMenuItem.Checked = true; say($"Speech enabled."); }
             }
             //if there is no gameLogic instance assigned to game variable
             catch (NullReferenceException) { labelStartGameToChangeSettings.Visible = true; speechToolStripMenuItem.Checked = false; }
@@ -264,9 +268,9 @@ namespace O_NeilloGame_v2
         {
             try
             {
-                if (game.InformationPanelEnabled)
+                if (labelGameInformation.Visible)
                 {
-                    game.InformationPanelEnabled = false;
+                    labelGameInformation.Visible = false;
                     informationPanelToolStripMenuItem.Checked = false;
                     labelGameInformation.Visible = false;
                     pictureBoxPlayer1.Visible = false;
@@ -281,11 +285,11 @@ namespace O_NeilloGame_v2
                     labelPlayer2NumberOfTokens.Visible = false;
                     labelPlayer1ToPlay.Visible = false;
                     labelPlayer2ToPlay.Visible = false;
-                    if (game.SpeechEnabled) { say("Information panel off"); }
+                    if (SpeechEnabled) { say("Information panel off"); }
                 }
-                else if (!game.InformationPanelEnabled)
+                else if (!labelGameInformation.Visible)
                 {
-                    game.InformationPanelEnabled = true;
+                    labelGameInformation.Visible = true;
                     informationPanelToolStripMenuItem.Checked = true;
                     labelGameInformation.Visible = true;
                     pictureBoxPlayer1.Visible = true;
@@ -300,7 +304,7 @@ namespace O_NeilloGame_v2
                     labelPlayer2NumberOfTokens.Visible = true;
                     labelPlayer1ToPlay.Visible = true;
                     labelPlayer2ToPlay.Visible = true;
-                    if (game.SpeechEnabled) { say("Information panel on"); }
+                    if (SpeechEnabled) { say("Information panel on"); }
                 }
             }
             //if there is no gameLogic instance assigned to game variable
@@ -442,8 +446,8 @@ namespace O_NeilloGame_v2
 
             //restore application rule
             applicationRule = File.ReadAllLines("./gamesaves/game_data.json")[0];
-            if (applicationRule.Split("speech:")[1].Split("~")[0] == "true" && !game.SpeechEnabled) { toggleSpeech(); }
-            else if (applicationRule.Split("speech:")[1].Split("~")[0] == "false" && game.SpeechEnabled) { toggleSpeech(); }
+            if (applicationRule.Split("speech:")[1].Split("~")[0] == "true" && !SpeechEnabled) { toggleSpeech(); }
+            else if (applicationRule.Split("speech:")[1].Split("~")[0] == "false" && SpeechEnabled) { toggleSpeech(); }
             if (applicationRule.Split("informationPanel:")[1].Split("~")[0] == "false" && labelGameInformation.Visible) { toggleInformationPanel(); }
             else if (applicationRule.Split("informationPanel:")[1].Split("~")[0] == "true" && !labelGameInformation.Visible) { toggleInformationPanel(); toggleInformationPanel(); }
         }
@@ -484,7 +488,7 @@ namespace O_NeilloGame_v2
                     {
                         //overwrite here and process this method no further (number of saves will not change)
                         currentGameSavesDictionary[gameSaveName] = JsonConvert.SerializeObject(game, Formatting.None, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
-                        File.WriteAllText("./gamesaves/game_data.json", $"~applicationRule~speech:{Convert.ToString(game.SpeechEnabled).ToLower()}~informationPanel:{Convert.ToString(labelGameInformation.Visible).ToLower()}~");
+                        File.WriteAllText("./gamesaves/game_data.json", $"~applicationRule~speech:{Convert.ToString(SpeechEnabled).ToLower()}~informationPanel:{Convert.ToString(labelGameInformation.Visible).ToLower()}~");
                         foreach (string key in keys.Split(' '))
                         {
                             if (key == "") { continue; }
@@ -529,7 +533,7 @@ namespace O_NeilloGame_v2
                 currentGameSavesDictionary.Add(gameSaveName, JsonConvert.SerializeObject(game, Formatting.None, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }));
 
                 //overwrite game saves file
-                File.WriteAllText("./gamesaves/game_data.json", $"~applicationRule~speech:{Convert.ToString(game.SpeechEnabled).ToLower()}~informationPanel:{Convert.ToString(labelGameInformation.Visible).ToLower()}~");
+                File.WriteAllText("./gamesaves/game_data.json", $"~applicationRule~speech:{Convert.ToString(SpeechEnabled).ToLower()}~informationPanel:{Convert.ToString(labelGameInformation.Visible).ToLower()}~");
                 foreach (string key in keys.Split(' '))
                 {
                     if (key.Trim() == "") { continue; }
@@ -566,11 +570,11 @@ namespace O_NeilloGame_v2
             //check for blank inputs, to set the player name to "Player [number]"
             if (player1InputName.Trim() == "")
             {
-                player1InputName = "Player 1";
+                player1InputName = "Player #1";
             }
             if (player2InputName.Trim() == "")
             {
-                player2InputName = "Player 2";
+                player2InputName = "Player #2";
             }
 
             //assign names to the window and to the respective game variables
@@ -583,14 +587,17 @@ namespace O_NeilloGame_v2
             //draw the game board
             createBoard();
 
+            //create new GameBoardImageArray instance
             //align the board to the left to leave space for the information panel using the two Point objects
             game.gameBoard = new GameboardImageArray(this, game.gameBoardData, new Point(5, 29), new Point(253, 5), 1, game.imagePath);
             game.gameBoard.TileClicked += new GameboardImageArray.TileClickedEventDelegate(GameTileClicked);
 
             //restore application rule
+            //set speech to off (assign false)
+            SpeechEnabled = false;
             applicationRule = File.ReadAllLines("./gamesaves/game_data.json")[0];
-            if (applicationRule.Split("speech:")[1].Split("~")[0] == "true" && !game.SpeechEnabled) { toggleSpeech(); }
-            else if (applicationRule.Split("speech:")[1].Split("~")[0] == "false" && game.SpeechEnabled) { toggleSpeech(); }
+            if (applicationRule.Split("speech:")[1].Split("~")[0] == "true" && !SpeechEnabled) { toggleSpeech(); }
+            else if (applicationRule.Split("speech:")[1].Split("~")[0] == "false" && SpeechEnabled) { toggleSpeech(); }
             if (applicationRule.Split("informationPanel:")[1].Split("~")[0] == "false" && labelGameInformation.Visible) { toggleInformationPanel(); }
             else if (applicationRule.Split("informationPanel:")[1].Split("~")[0] == "true" && !labelGameInformation.Visible) { toggleInformationPanel(); toggleInformationPanel(); }
 
@@ -639,6 +646,16 @@ namespace O_NeilloGame_v2
         private void restoreGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             restoreGame();
+        }
+
+        private void O_Neill_Game_Window_Load(object sender, EventArgs e)
+        {
+            //restore application rule
+            applicationRule = File.ReadAllLines("./gamesaves/game_data.json")[0];
+            if (applicationRule.Split("speech:")[1].Split("~")[0] == "true" && !SpeechEnabled) { toggleSpeech(); }
+            else if (applicationRule.Split("speech:")[1].Split("~")[0] == "false" && SpeechEnabled) { toggleSpeech(); }
+            if (applicationRule.Split("informationPanel:")[1].Split("~")[0] == "false" && labelGameInformation.Visible) { toggleInformationPanel(); }
+            else if (applicationRule.Split("informationPanel:")[1].Split("~")[0] == "true" && !labelGameInformation.Visible) { toggleInformationPanel(); toggleInformationPanel(); }
         }
     }
 }
