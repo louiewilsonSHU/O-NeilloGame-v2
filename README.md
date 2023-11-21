@@ -7,6 +7,3 @@ This game uses the Gameboard Image Array class, that has been slightly modified 
 dependencies
 -System.Speech
 -Newtonsoft.Json
-
-other notes
--application rules are restored on game load/start

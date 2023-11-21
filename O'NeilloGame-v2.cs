@@ -366,7 +366,7 @@ namespace O_NeilloGame_v2
                 for (int iterator = 0; iterator < keys.Split(' ').Length; iterator++)
                 {
                     if (keys.Split(' ')[iterator].Trim() == "") { continue; }
-                    prompt += $"\n{iterator + 1}. {keys.Split(' ')[iterator]}";
+                    prompt += $"\n{iterator + 1}. {keys.Split(' ')[iterator].Replace('_', ' ')}";
                 }
 
                 //while loop used for validation - continue prompting user for valid entry until entry is valid
@@ -414,11 +414,17 @@ namespace O_NeilloGame_v2
             game.gameBoardData = JsonConvert.DeserializeObject<int[,]>(Convert.ToString(gameJsonObject["gameBoardData"]));
 
             game.Player = JsonConvert.DeserializeObject<int>(Convert.ToString(gameJsonObject["Player"]));
+
+            //set relevant player "To Play" label to enabled
             if (game.Player == 1)
             {
-                game.Player = 1;
                 labelPlayer1ToPlay.Enabled = true;
                 labelPlayer2ToPlay.Enabled = false;
+            }
+            else
+            {
+                labelPlayer1ToPlay.Enabled = false;
+                labelPlayer2ToPlay.Enabled = true;
             }
 
             //assign names to the window and to the respective game variables
@@ -472,6 +478,8 @@ namespace O_NeilloGame_v2
             while (true)
             {
                 gameSaveName = Interaction.InputBox("Please choose a name for your game save.\nPress \"Cancel\" or leave blank to skip saving.", "O'Neillo Game", Convert.ToString(DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")));
+                //replace all spaces with underscores
+                gameSaveName = gameSaveName.Replace(' ', '_');
 
                 //if the user enters nothing or presses "Cancel", do not save
                 if (gameSaveName.Trim() == "")
@@ -502,7 +510,7 @@ namespace O_NeilloGame_v2
             }
             //check if there are 5 game saves, choose which to overwrite if there are
             //(the logic counts the application rule as a game save, hence the condition looking for 6 keys)
-            if (keys.Split(' ').Length == 6)
+            if (keys.Split(' ').Length > 5)
             {
                 //declare integer variable, assignment comes when user selects which save to overwrite
                 int overwriteChoice;
@@ -589,6 +597,11 @@ namespace O_NeilloGame_v2
 
             //update tile numbers
             updateTileNumbers();
+
+
+            //set Player 2 to play
+            labelPlayer1ToPlay.Enabled = false;
+            labelPlayer2ToPlay.Enabled = true;
 
             //create new GameBoardImageArray instance
             //align the board to the left to leave space for the information panel using the two Point objects
