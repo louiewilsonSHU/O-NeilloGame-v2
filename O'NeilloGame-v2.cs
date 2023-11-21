@@ -521,7 +521,7 @@ namespace O_NeilloGame_v2
                     //try...catch statement used for presence and type check
                     try
                     {
-                        overwriteChoice = Convert.ToInt32(Interaction.InputBox($"You already have five game saves.\nEnter the number of the game save to overwrite\n1. {keys.Split(' ')[0]}\n2. {keys.Split(' ')[1]}\n3. {keys.Split(' ')[2]}\n4. {keys.Split(' ')[3]}\n5. {keys.Split(' ')[4]}", "O'Neillo Game"));
+                        overwriteChoice = Convert.ToInt32(Interaction.InputBox($"You already have five game saves.\nEnter the number of the game save to overwrite\n1. {keys.Split(' ')[0]}\n2. {keys.Split(' ')[1]}\n3. {keys.Split(' ')[2]}\n4. {keys.Split(' ')[3]}\n5. {keys.Split(' ')[4]}".Replace('_', ' '), "O'Neillo Game"));
 
                         //validation - range check
                         if (!(overwriteChoice == 1 || overwriteChoice == 2 || overwriteChoice == 3 || overwriteChoice == 4 || overwriteChoice == 5))
