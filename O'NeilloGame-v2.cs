@@ -430,15 +430,15 @@ namespace O_NeilloGame_v2
             labelPlayer1Name.Text = game.Player1Name;
             labelPlayer2Name.Text = game.Player2Name;
 
-            //update tile numbers
-            updateTileNumbers();
-
             //align the board to the left to leave space for the information panel using the two Point objects
             game.gameBoard = new GameboardImageArray(this, game.gameBoardData, new Point(5, 29), new Point(253, 5), 1, game.imagePath);
             game.gameBoard.TileClicked += new GameboardImageArray.TileClickedEventDelegate(GameTileClicked);
 
             //update the game board
             game.gameBoard.UpdateBoardGui(game.gameBoardData);
+
+            //update tile numbers
+            updateTileNumbers();
 
             //disable any starter messages that may be visible
             labelNewGame.Visible = false;
@@ -586,6 +586,9 @@ namespace O_NeilloGame_v2
 
             //draw the game board
             createBoard();
+
+            //update tile numbers
+            updateTileNumbers();
 
             //create new GameBoardImageArray instance
             //align the board to the left to leave space for the information panel using the two Point objects
