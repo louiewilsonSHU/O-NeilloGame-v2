@@ -29,9 +29,6 @@ namespace O_NeilloGame_v2
         public O_Neill_Game_Window()
         {
             InitializeComponent();
-
-            //if there is a game save already saved, then enable the "Restore Game" menu option
-            if (File.ReadAllLines("./gamesaves/game_data.json").Length == 2) { restoreGameToolStripMenuItem.Enabled = true; }
         }
 
         ///<summary> Event handler for if a game board tile was clicked </summary>
@@ -494,6 +491,7 @@ namespace O_NeilloGame_v2
                             if (key == "") { continue; }
                             else if (key.Trim().Contains("~applicationRule~")) { continue; }
                             File.AppendAllText("./gamesaves/game_data.json", $"\n{key}:{currentGameSavesDictionary[key]}");
+                            //enable the "Restore Game" menu option
                             restoreGameToolStripMenuItem.Enabled = true;
                         }
                         MessageBox.Show("Success");
@@ -539,6 +537,7 @@ namespace O_NeilloGame_v2
                     if (key.Trim() == "") { continue; }
                     File.AppendAllText("./gamesaves/game_data.json", $"\n{key}:{currentGameSavesDictionary[key]}");
                 }
+                //enable the "Restore Game" menu option
                 restoreGameToolStripMenuItem.Enabled = true;
                 MessageBox.Show("Success");
                 return;
@@ -546,6 +545,7 @@ namespace O_NeilloGame_v2
             //if none of the above conditions matched, append the game save to the game saves file
             gameSaveName = gameSaveName.Trim();
             File.AppendAllText("./gamesaves/game_data.json", $"\n{gameSaveName}:{JsonConvert.SerializeObject(game, Formatting.None, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore })}");
+            //enable the "Restore Game" menu option
             restoreGameToolStripMenuItem.Enabled = true;
             MessageBox.Show("Success");
         }
@@ -653,6 +653,9 @@ namespace O_NeilloGame_v2
 
         private void O_Neill_Game_Window_Load(object sender, EventArgs e)
         {
+            //if there is a game save already saved, then enable the "Restore Game" menu option
+            if (File.ReadAllLines("./gamesaves/game_data.json").Length > 1) { restoreGameToolStripMenuItem.Enabled = true; }
+
             //restore application rule
             applicationRule = File.ReadAllLines("./gamesaves/game_data.json")[0];
             if (applicationRule.Split("speech:")[1].Split("~")[0] == "true" && !SpeechEnabled) { toggleSpeech(); }
