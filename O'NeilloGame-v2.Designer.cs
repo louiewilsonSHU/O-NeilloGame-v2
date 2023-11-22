@@ -365,6 +365,7 @@
             MinimumSize = new Size(816, 489);
             Name = "O_Neill_Game_Window";
             Text = "O'Neill Game";
+            FormClosing += O_Neill_Game_Window_FormClosing;
             Load += O_Neill_Game_Window_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

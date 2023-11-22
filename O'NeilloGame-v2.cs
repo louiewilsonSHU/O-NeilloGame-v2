@@ -676,5 +676,23 @@ namespace O_NeilloGame_v2
             if (applicationRule.Split("informationPanel:")[1].Split("~")[0] == "false" && labelGameInformation.Visible) { toggleInformationPanel(); }
             else if (applicationRule.Split("informationPanel:")[1].Split("~")[0] == "true" && !labelGameInformation.Visible) { toggleInformationPanel(); toggleInformationPanel(); }
         }
+
+        /// <summary>
+        /// Event handler for if the user closes the form, calls the method to save a game if there is one in progress
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void O_Neill_Game_Window_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //check if there is a game in progress and prompt user to save if so
+            try
+            {
+                if (game.GameInProgress)
+                {
+                    saveGame();
+                }
+            }
+            catch (NullReferenceException) { } //this error would be thrown if there is no game object instantiated, so there is no game in progress
+        }
     }
 }
