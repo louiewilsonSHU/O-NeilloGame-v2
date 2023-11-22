@@ -410,7 +410,7 @@ namespace O_NeilloGame_v2
             game = new GameLogic();
 
             //de-serialize game properties and assign to respective game variables
-            var gameJsonObject = JsonConvert.DeserializeObject<JObject>(gameJson);
+            JObject gameJsonObject = JsonConvert.DeserializeObject<JObject>(gameJson);
             game.gameBoardData = JsonConvert.DeserializeObject<int[,]>(Convert.ToString(gameJsonObject["gameBoardData"]));
 
             game.Player = JsonConvert.DeserializeObject<int>(Convert.ToString(gameJsonObject["Player"]));
