@@ -624,15 +624,18 @@ namespace O_NeilloGame_v2
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //check if there is a game in progress and prompt user to save if so
-            try
+            if (MessageBox.Show("Would you like to save before leaving?", "O'Neill Game", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                if (game.GameInProgress)
+                try
                 {
-                    saveGame();
+                    if (game.GameInProgress)
+                    {
+                        saveGame();
+                    }
                 }
+                catch (NullReferenceException) { } //this error would be thrown if there is no game object instantiated, so there is no game in progress
+                Application.Exit();
             }
-            catch (NullReferenceException) { } //this error would be thrown if there is no game object instantiated, so there is no game in progress
-            Application.Exit();
         }
 
         /// <summary>
@@ -685,14 +688,18 @@ namespace O_NeilloGame_v2
         private void O_Neill_Game_Window_FormClosing(object sender, FormClosingEventArgs e)
         {
             //check if there is a game in progress and prompt user to save if so
-            try
+            if (MessageBox.Show("Would you like to save before leaving?", "O'Neill Game", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                if (game.GameInProgress)
+                try
                 {
-                    saveGame();
+                    if (game.GameInProgress)
+                    {
+                        saveGame();
+                    }
                 }
+                catch (NullReferenceException) { } //this error would be thrown if there is no game object instantiated, so there is no game in progress
             }
-            catch (NullReferenceException) { } //this error would be thrown if there is no game object instantiated, so there is no game in progress
+            
         }
     }
 }
