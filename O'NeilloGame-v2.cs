@@ -403,7 +403,7 @@ namespace O_NeilloGame_v2
 
             //destroy the current game board if there is one instantiated
             try
-            { if (game.GameInProgress) { game.gameBoard.destroy(); } }
+            { game.gameBoard.destroy(); }
             catch (NullReferenceException) { }
 
             //create the GameLogic instance using the game save
