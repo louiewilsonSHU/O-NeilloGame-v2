@@ -226,13 +226,8 @@ namespace O_NeilloGame_v2
         /// </summary>
         private void toggleSpeech()
         {
-            try
-            {
-                if (SpeechEnabled) { SpeechEnabled = false; speechToolStripMenuItem.Checked = false; say("Speech disabled"); }
-                else { SpeechEnabled = true; speechToolStripMenuItem.Checked = true; say($"Speech enabled."); }
-            }
-            //if there is no gameLogic instance assigned to game variable
-            catch (NullReferenceException) { labelStartGameToChangeSettings.Visible = true; speechToolStripMenuItem.Checked = false; }
+            if (SpeechEnabled) { SpeechEnabled = false; speechToolStripMenuItem.Checked = false; say("Speech disabled"); }
+            else { SpeechEnabled = true; speechToolStripMenuItem.Checked = true; say($"Speech enabled."); }
         }
 
         /// <summary>
@@ -263,49 +258,44 @@ namespace O_NeilloGame_v2
         /// </summary>
         private void toggleInformationPanel()
         {
-            try
+            if (labelGameInformation.Visible)
             {
-                if (labelGameInformation.Visible)
-                {
-                    labelGameInformation.Visible = false;
-                    informationPanelToolStripMenuItem.Checked = false;
-                    labelGameInformation.Visible = false;
-                    pictureBoxPlayer1.Visible = false;
-                    pictureBoxPlayer2.Visible = false;
-                    labelPlayer1.Visible = false;
-                    labelPlayer2.Visible = false;
-                    labelPlayer1Name.Visible = false;
-                    labelPlayer2Name.Visible = false;
-                    labelPlayer1TokenCount.Visible = false;
-                    labelPlayer2TokenCount.Visible = false;
-                    labelPlayer1NumberOfTokens.Visible = false;
-                    labelPlayer2NumberOfTokens.Visible = false;
-                    labelPlayer1ToPlay.Visible = false;
-                    labelPlayer2ToPlay.Visible = false;
-                    if (SpeechEnabled) { say("Information panel off"); }
-                }
-                else if (!labelGameInformation.Visible)
-                {
-                    labelGameInformation.Visible = true;
-                    informationPanelToolStripMenuItem.Checked = true;
-                    labelGameInformation.Visible = true;
-                    pictureBoxPlayer1.Visible = true;
-                    pictureBoxPlayer2.Visible = true;
-                    labelPlayer1.Visible = true;
-                    labelPlayer2.Visible = true;
-                    labelPlayer1Name.Visible = true;
-                    labelPlayer2Name.Visible = true;
-                    labelPlayer1TokenCount.Visible = true;
-                    labelPlayer2TokenCount.Visible = true;
-                    labelPlayer1NumberOfTokens.Visible = true;
-                    labelPlayer2NumberOfTokens.Visible = true;
-                    labelPlayer1ToPlay.Visible = true;
-                    labelPlayer2ToPlay.Visible = true;
-                    if (SpeechEnabled) { say("Information panel on"); }
-                }
+                labelGameInformation.Visible = false;
+                informationPanelToolStripMenuItem.Checked = false;
+                labelGameInformation.Visible = false;
+                pictureBoxPlayer1.Visible = false;
+                pictureBoxPlayer2.Visible = false;
+                labelPlayer1.Visible = false;
+                labelPlayer2.Visible = false;
+                labelPlayer1Name.Visible = false;
+                labelPlayer2Name.Visible = false;
+                labelPlayer1TokenCount.Visible = false;
+                labelPlayer2TokenCount.Visible = false;
+                labelPlayer1NumberOfTokens.Visible = false;
+                labelPlayer2NumberOfTokens.Visible = false;
+                labelPlayer1ToPlay.Visible = false;
+                labelPlayer2ToPlay.Visible = false;
+                if (SpeechEnabled) { say("Information panel off"); }
             }
-            //if there is no gameLogic instance assigned to game variable
-            catch (NullReferenceException) { labelStartGameToChangeSettings.Visible = true; informationPanelToolStripMenuItem.Checked = true; }
+            else if (!labelGameInformation.Visible)
+            {
+                labelGameInformation.Visible = true;
+                informationPanelToolStripMenuItem.Checked = true;
+                labelGameInformation.Visible = true;
+                pictureBoxPlayer1.Visible = true;
+                pictureBoxPlayer2.Visible = true;
+                labelPlayer1.Visible = true;
+                labelPlayer2.Visible = true;
+                labelPlayer1Name.Visible = true;
+                labelPlayer2Name.Visible = true;
+                labelPlayer1TokenCount.Visible = true;
+                labelPlayer2TokenCount.Visible = true;
+                labelPlayer1NumberOfTokens.Visible = true;
+                labelPlayer2NumberOfTokens.Visible = true;
+                labelPlayer1ToPlay.Visible = true;
+                labelPlayer2ToPlay.Visible = true;
+                if (SpeechEnabled) { say("Information panel on"); }
+            }
         }
 
         /// <summary>
@@ -317,7 +307,6 @@ namespace O_NeilloGame_v2
         {
             //hide new game message and "start game to change settings" message if it is visible
             labelNewGame.Visible = false;
-            labelStartGameToChangeSettings.Visible = false;
 
             //check if there is a game in progress and prompt user to save if so
             try
@@ -445,7 +434,6 @@ namespace O_NeilloGame_v2
 
             //disable any starter messages that may be visible
             labelNewGame.Visible = false;
-            labelStartGameToChangeSettings.Visible = false;
 
             //restore application rule
             applicationRule = File.ReadAllLines("./gamesaves/game_data.json")[0];

@@ -55,7 +55,6 @@
             labelPlayer2 = new Label();
             pictureBoxPlayer2 = new PictureBox();
             labelNewGame = new Label();
-            labelStartGameToChangeSettings = new Label();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxPlayer1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxPlayer2).BeginInit();
@@ -92,21 +91,21 @@
             // newGameToolStripMenuItem
             // 
             newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            newGameToolStripMenuItem.Size = new Size(147, 22);
+            newGameToolStripMenuItem.Size = new Size(180, 22);
             newGameToolStripMenuItem.Text = "New Game";
             newGameToolStripMenuItem.Click += newGameToolStripMenuItem_Click;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(147, 22);
+            exitToolStripMenuItem.Size = new Size(180, 22);
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
             // saveGameToolStripMenuItem
             // 
             saveGameToolStripMenuItem.Name = "saveGameToolStripMenuItem";
-            saveGameToolStripMenuItem.Size = new Size(147, 22);
+            saveGameToolStripMenuItem.Size = new Size(180, 22);
             saveGameToolStripMenuItem.Text = "Save Game";
             saveGameToolStripMenuItem.Click += saveGameToolStripMenuItem_Click;
             // 
@@ -114,7 +113,7 @@
             // 
             restoreGameToolStripMenuItem.Enabled = false;
             restoreGameToolStripMenuItem.Name = "restoreGameToolStripMenuItem";
-            restoreGameToolStripMenuItem.Size = new Size(147, 22);
+            restoreGameToolStripMenuItem.Size = new Size(180, 22);
             restoreGameToolStripMenuItem.Text = "Restore Game";
             restoreGameToolStripMenuItem.Click += restoreGameToolStripMenuItem_Click;
             // 
@@ -321,18 +320,6 @@
             labelNewGame.TabIndex = 15;
             labelNewGame.Text = "To start, use the \"Game\" menu.";
             // 
-            // labelStartGameToChangeSettings
-            // 
-            labelStartGameToChangeSettings.AccessibleDescription = "labelStartGameToChangeSettings";
-            labelStartGameToChangeSettings.AccessibleName = "labelStartGameToChangeSettings";
-            labelStartGameToChangeSettings.AutoSize = true;
-            labelStartGameToChangeSettings.Location = new Point(25, 73);
-            labelStartGameToChangeSettings.Name = "labelStartGameToChangeSettings";
-            labelStartGameToChangeSettings.Size = new Size(479, 15);
-            labelStartGameToChangeSettings.TabIndex = 16;
-            labelStartGameToChangeSettings.Text = "Please start a game to change game settings. Saved setting will be restored on game load.";
-            labelStartGameToChangeSettings.Visible = false;
-            // 
             // O_Neill_Game_Window
             // 
             AccessibleDescription = "O_Neill_Game_Window";
@@ -340,7 +327,6 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(labelStartGameToChangeSettings);
             Controls.Add(labelNewGame);
             Controls.Add(labelPlayer2ToPlay);
             Controls.Add(labelPlayer2TokenCount);
@@ -400,7 +386,6 @@
         private ToolStripMenuItem speechToolStripMenuItem;
         private ToolStripMenuItem informationPanelToolStripMenuItem;
         private Label labelNewGame;
-        private Label labelStartGameToChangeSettings;
         private ToolStripMenuItem exitToolStripMenuItem;
         private ToolStripMenuItem saveGameToolStripMenuItem;
         private ToolStripMenuItem restoreGameToolStripMenuItem;
