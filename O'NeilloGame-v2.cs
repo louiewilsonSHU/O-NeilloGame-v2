@@ -673,5 +673,31 @@ namespace O_NeilloGame_v2
             }
             catch (NullReferenceException) { } //this error would be thrown if there is no game object instantiated, so there is no game in progress
         }
+
+        /// <summary>
+        /// Event handler for the "Clear Game Saves" menu option which clears the game saves file so there are no games saved
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void clearGameSavesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //confirm
+            if (MessageBox.Show("Confirm clearing game saves?", "O'Neill Game", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            //get the application rule so it is not lost
+            string applicationRule = File.ReadAllLines("./gamesaves/game_data.json")[0];
+
+            //overwrite the saves file only with the application rule
+            File.WriteAllText("./gamesaves/game_data.json", applicationRule);
+
+            //disallow the user to restore a game
+            restoreGameToolStripMenuItem.Enabled = false;
+
+            //inform the user of completion
+            MessageBox.Show("Success");
+        }
     }
 }

@@ -55,6 +55,7 @@
             labelPlayer2 = new Label();
             pictureBoxPlayer2 = new PictureBox();
             labelNewGame = new Label();
+            clearGameSavesToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxPlayer1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxPlayer2).BeginInit();
@@ -83,7 +84,7 @@
             // 
             // gameToolStripMenuItem
             // 
-            gameToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { newGameToolStripMenuItem, exitToolStripMenuItem, saveGameToolStripMenuItem, restoreGameToolStripMenuItem });
+            gameToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { newGameToolStripMenuItem, exitToolStripMenuItem, saveGameToolStripMenuItem, restoreGameToolStripMenuItem, clearGameSavesToolStripMenuItem });
             gameToolStripMenuItem.Name = "gameToolStripMenuItem";
             gameToolStripMenuItem.Size = new Size(50, 20);
             gameToolStripMenuItem.Text = "Game";
@@ -128,7 +129,7 @@
             // 
             speechToolStripMenuItem.CheckOnClick = true;
             speechToolStripMenuItem.Name = "speechToolStripMenuItem";
-            speechToolStripMenuItem.Size = new Size(169, 22);
+            speechToolStripMenuItem.Size = new Size(180, 22);
             speechToolStripMenuItem.Text = "Speech";
             speechToolStripMenuItem.Click += speechToolStripMenuItem_Click;
             // 
@@ -138,7 +139,7 @@
             informationPanelToolStripMenuItem.CheckOnClick = true;
             informationPanelToolStripMenuItem.CheckState = CheckState.Checked;
             informationPanelToolStripMenuItem.Name = "informationPanelToolStripMenuItem";
-            informationPanelToolStripMenuItem.Size = new Size(169, 22);
+            informationPanelToolStripMenuItem.Size = new Size(180, 22);
             informationPanelToolStripMenuItem.Text = "Information Panel";
             informationPanelToolStripMenuItem.Click += informationPanelToolStripMenuItem_Click;
             // 
@@ -320,6 +321,13 @@
             labelNewGame.TabIndex = 15;
             labelNewGame.Text = "To start, use the \"Game\" menu.";
             // 
+            // clearGameSavesToolStripMenuItem
+            // 
+            clearGameSavesToolStripMenuItem.Name = "clearGameSavesToolStripMenuItem";
+            clearGameSavesToolStripMenuItem.Size = new Size(180, 22);
+            clearGameSavesToolStripMenuItem.Text = "Clear Game Saves";
+            clearGameSavesToolStripMenuItem.Click += clearGameSavesToolStripMenuItem_Click;
+            // 
             // O_Neill_Game_Window
             // 
             AccessibleDescription = "O_Neill_Game_Window";
@@ -389,5 +397,6 @@
         private ToolStripMenuItem exitToolStripMenuItem;
         private ToolStripMenuItem saveGameToolStripMenuItem;
         private ToolStripMenuItem restoreGameToolStripMenuItem;
+        private ToolStripMenuItem clearGameSavesToolStripMenuItem;
     }
 }
