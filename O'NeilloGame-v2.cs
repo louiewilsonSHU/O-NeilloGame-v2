@@ -327,7 +327,8 @@ namespace O_NeilloGame_v2
         /// </summary>
         private void restoreGame()
         {
-            //get a dictionary of the current game saves, create a string of keys (separated with space) to be used when checking if a game save with the name save already exists and declare string to store chosen game JSON
+            //get a dictionary of the current game saves, create a string of keys (separated with space) to be used when checking if a game save with the name
+            //save already exists and declare string to store chosen game JSON
             var currentGameSavesDictionary = new Dictionary<string, string>();
             string keys = "";
             string gameJson;
