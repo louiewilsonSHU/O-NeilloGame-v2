@@ -497,7 +497,6 @@ namespace O_NeilloGame_v2
                 else { break; }
             }
             //check if there are 5 game saves, choose which to overwrite if there are
-            //(the logic counts the application rule as a game save, hence the condition looking for 6 keys)
             if (keys.Split(' ').Length > 5)
             {
                 //declare integer variable, assignment comes when user selects which save to overwrite
