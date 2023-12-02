@@ -374,13 +374,76 @@ namespace O_NeilloGame_v2
             //take a note of the inverse of the current player, i.e., the player who did not make the move
             int inversePlayer = player == 1 ? 0 : 1;
 
-            //two variables used in the while loops to check the move
-            int rowCounter;
-            int columnCounter;
-
             //possibility 1
-            rowCounter = row - 1;
-            columnCounter = column;
+            foreach (List<int> tileToChange in ProcessMovePossibility1(board, row, column, player, inversePlayer))
+            {
+                tilesToChange.Add(tileToChange);
+            }
+
+            //possibility 2
+            foreach (List<int> tileToChange in ProcessMovePossibility2(board, row, column, player, inversePlayer))
+            {
+                tilesToChange.Add(tileToChange);
+            }
+
+            //possibility 3
+            foreach (List<int> tileToChange in ProcessMovePossibility3(board, row, column, player, inversePlayer))
+            {
+                tilesToChange.Add(tileToChange);
+            }
+
+            //possibility 4
+            foreach (List<int> tileToChange in ProcessMovePossibility4(board, row, column, player, inversePlayer))
+            {
+                tilesToChange.Add(tileToChange);
+            }
+
+            //possibility 5
+            foreach (List<int> tileToChange in ProcessMovePossibility5(board, row, column, player, inversePlayer))
+            {
+                tilesToChange.Add(tileToChange);
+            }
+
+            //possibility 6
+            foreach (List<int> tileToChange in ProcessMovePossibility6(board, row, column, player, inversePlayer))
+            {
+                tilesToChange.Add(tileToChange);
+            }
+
+            //possibility 7
+            foreach (List<int> tileToChange in ProcessMovePossibility7(board, row, column, player, inversePlayer))
+            {
+                tilesToChange.Add(tileToChange);
+            }
+
+            //possibility 8
+            foreach (List<int> tileToChange in ProcessMovePossibility8(board, row, column, player, inversePlayer))
+            {
+                tilesToChange.Add(tileToChange);
+            }
+
+            //return full 2-d list of tiles to change
+            return tilesToChange;
+        }
+
+        /// <summary>
+        /// Process possibility 1 of a legal move
+        /// </summary>
+        /// <param name="board">The game board array, after the move was made (i.e., with the new tile)</param>
+        /// <param name="row">Row of the move</param>
+        /// <param name="column">Column of the move</param>
+        /// <param name="player">Current player number, 1 or 0</param>
+        /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
+        /// <returns>2-d list of tiles to flip</returns>
+        static List<List<int>> ProcessMovePossibility1(int[,] board, int row, int column, int player, int inversePlayer)
+        {
+            //declare local list to add tiles to
+            List<List<int>> tilesToChange = new List<List<int>>();
+
+            //two variables used in the while loops to check the move
+            //possibility 1
+            int rowCounter = row - 1;
+            int columnCounter = column;
             try
             {
                 while (board[rowCounter, columnCounter] == inversePlayer)
@@ -393,12 +456,29 @@ namespace O_NeilloGame_v2
                     }
                     rowCounter--;
                 }
+                return tilesToChange;
             }
-            catch (Exception) { } //if the end of the board was reached, continue
+            catch (Exception) { return tilesToChange; } //if the end of the board was reached, continue
+        }
 
+        /// <summary>
+        /// Process possibility 2 of a legal move
+        /// </summary>
+        /// <param name="board">The game board array, after the move was made (i.e., with the new tile)</param>
+        /// <param name="row">Row of the move</param>
+        /// <param name="column">Column of the move</param>
+        /// <param name="player">Current player number, 1 or 0</param>
+        /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
+        /// <returns>2-d list of tiles to flip</returns>
+        static List<List<int>> ProcessMovePossibility2(int[,] board, int row, int column, int player, int inversePlayer)
+        {
+            //declare local list to add tiles to
+            List<List<int>> tilesToChange = new List<List<int>>();
+
+            //two variables used in the while loops to check the move
             //possibility 2
-            rowCounter = row - 1;
-            columnCounter = column + 1;
+            int rowCounter = row - 1;
+            int columnCounter = column + 1;
             try
             {
                 while (board[rowCounter, columnCounter] == inversePlayer)
@@ -412,12 +492,29 @@ namespace O_NeilloGame_v2
                     rowCounter--;
                     columnCounter++;
                 }
+                return tilesToChange;
             }
-            catch (Exception) { } //if the end of the board was reached, continue
+            catch (Exception) { return tilesToChange; } //if the end of the board was reached, continue
+        }
 
+        /// <summary>
+        /// Process possibility 3 of a legal move
+        /// </summary>
+        /// <param name="board">The game board array, after the move was made (i.e., with the new tile)</param>
+        /// <param name="row">Row of the move</param>
+        /// <param name="column">Column of the move</param>
+        /// <param name="player">Current player number, 1 or 0</param>
+        /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
+        /// <returns>2-d list of tiles to flip</returns>
+        static List<List<int>> ProcessMovePossibility3(int[,] board, int row, int column, int player, int inversePlayer)
+        {
+            //declare local list to add tiles to
+            List<List<int>> tilesToChange = new List<List<int>>();
+
+            //two variables used in the while loops to check the move
             //possibility 3
-            rowCounter = row;
-            columnCounter = column + 1;
+            int rowCounter = row;
+            int columnCounter = column + 1;
             try
             {
                 while (board[rowCounter, columnCounter] == inversePlayer)
@@ -430,12 +527,29 @@ namespace O_NeilloGame_v2
                     }
                     columnCounter++;
                 }
+                return tilesToChange;
             }
-            catch (Exception) { } //if the end of the board was reached, continue
+            catch (Exception) { return tilesToChange; } //if the end of the board was reached, continue
+        }
 
+        /// <summary>
+        /// Process possibility 4 of a legal move
+        /// </summary>
+        /// <param name="board">The game board array, after the move was made (i.e., with the new tile)</param>
+        /// <param name="row">Row of the move</param>
+        /// <param name="column">Column of the move</param>
+        /// <param name="player">Current player number, 1 or 0</param>
+        /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
+        /// <returns>2-d list of tiles to flip</returns>
+        static List<List<int>> ProcessMovePossibility4(int[,] board, int row, int column, int player, int inversePlayer)
+        {
+            //declare local list to add tiles to
+            List<List<int>> tilesToChange = new List<List<int>>();
+
+            //two variables used in the while loops to check the move
             //possibility 4
-            rowCounter = row + 1;
-            columnCounter = column + 1;
+            int rowCounter = row + 1;
+            int columnCounter = column + 1;
             try
             {
                 while (board[rowCounter, columnCounter] == inversePlayer)
@@ -449,12 +563,29 @@ namespace O_NeilloGame_v2
                     rowCounter++;
                     columnCounter++;
                 }
+                return tilesToChange;
             }
-            catch (Exception) { } //if the end of the board was reached, continue
+            catch (Exception) { return tilesToChange; } //if the end of the board was reached, continue
+        }
 
+        /// <summary>
+        /// Process possibility 5 of a legal move
+        /// </summary>
+        /// <param name="board">The game board array, after the move was made (i.e., with the new tile)</param>
+        /// <param name="row">Row of the move</param>
+        /// <param name="column">Column of the move</param>
+        /// <param name="player">Current player number, 1 or 0</param>
+        /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
+        /// <returns>2-d list of tiles to flip</returns>
+        static List<List<int>> ProcessMovePossibility5(int[,] board, int row, int column, int player, int inversePlayer)
+        {
+            //declare local list to add tiles to
+            List<List<int>> tilesToChange = new List<List<int>>();
+
+            //two variables used in the while loops to check the move
             //possibility 5
-            rowCounter = row + 1;
-            columnCounter = column;
+            int rowCounter = row + 1;
+            int columnCounter = column;
             try
             {
                 while (board[rowCounter, columnCounter] == inversePlayer)
@@ -467,12 +598,29 @@ namespace O_NeilloGame_v2
                     }
                     rowCounter++;
                 }
+                return tilesToChange;
             }
-            catch (Exception) { } //if the end of the board was reached, continue
+            catch (Exception) { return tilesToChange; } //if the end of the board was reached, continue
+        }
 
+        /// <summary>
+        /// Process possibility 6 of a legal move
+        /// </summary>
+        /// <param name="board">The game board array, after the move was made (i.e., with the new tile)</param>
+        /// <param name="row">Row of the move</param>
+        /// <param name="column">Column of the move</param>
+        /// <param name="player">Current player number, 1 or 0</param>
+        /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
+        /// <returns>2-d list of tiles to flip</returns>
+        static List<List<int>> ProcessMovePossibility6(int[,] board, int row, int column, int player, int inversePlayer)
+        {
+            //declare local list to add tiles to
+            List<List<int>> tilesToChange = new List<List<int>>();
+
+            //two variables used in the while loops to check the move
             //possibility 6
-            rowCounter = row + 1;
-            columnCounter = column - 1;
+            int rowCounter = row + 1;
+            int columnCounter = column - 1;
             try
             {
                 while (board[rowCounter, columnCounter] == inversePlayer)
@@ -486,12 +634,29 @@ namespace O_NeilloGame_v2
                     rowCounter++;
                     columnCounter--;
                 }
+                return tilesToChange;
             }
-            catch (Exception) { } //if the end of the board was reached, continue
+            catch (Exception) { return tilesToChange; } //if the end of the board was reached, continue
+        }
 
+        /// <summary>
+        /// Process possibility 7 of a legal move
+        /// </summary>
+        /// <param name="board">The game board array, after the move was made (i.e., with the new tile)</param>
+        /// <param name="row">Row of the move</param>
+        /// <param name="column">Column of the move</param>
+        /// <param name="player">Current player number, 1 or 0</param>
+        /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
+        /// <returns>2-d list of tiles to flip</returns>
+        static List<List<int>> ProcessMovePossibility7(int[,] board, int row, int column, int player, int inversePlayer)
+        {
+            //declare local list to add tiles to
+            List<List<int>> tilesToChange = new List<List<int>>();
+
+            //two variables used in the while loops to check the move
             //possibility 7
-            rowCounter = row;
-            columnCounter = column - 1;
+            int rowCounter = row;
+            int columnCounter = column - 1;
             try
             {
                 while (board[rowCounter, columnCounter] == inversePlayer)
@@ -504,12 +669,29 @@ namespace O_NeilloGame_v2
                     }
                     columnCounter--;
                 }
+                return tilesToChange;
             }
-            catch (Exception) { } //if the end of the board was reached, continue
+            catch (Exception) { return tilesToChange; } //if the end of the board was reached, continue
+        }
 
+        /// <summary>
+        /// Process possibility 8 of a legal move
+        /// </summary>
+        /// <param name="board">The game board array, after the move was made (i.e., with the new tile)</param>
+        /// <param name="row">Row of the move</param>
+        /// <param name="column">Column of the move</param>
+        /// <param name="player">Current player number, 1 or 0</param>
+        /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
+        /// <returns>2-d list of tiles to flip</returns>
+        static List<List<int>> ProcessMovePossibility8(int[,] board, int row, int column, int player, int inversePlayer)
+        {
+            //declare local list to add tiles to
+            List<List<int>> tilesToChange = new List<List<int>>();
+
+            //two variables used in the while loops to check the move
             //possibility 8
-            rowCounter = row - 1;
-            columnCounter = column - 1;
+            int rowCounter = row - 1;
+            int columnCounter = column - 1;
             try
             {
                 while (board[rowCounter, columnCounter] == inversePlayer)
@@ -523,10 +705,9 @@ namespace O_NeilloGame_v2
                     rowCounter--;
                     columnCounter--;
                 }
+                return tilesToChange;
             }
-            catch (Exception) { } //if the end of the board was reached, continue
-
-            return tilesToChange;
+            catch (Exception) { return tilesToChange; } //if the end of the board was reached, continue
         }
 
         /// <summary>
