@@ -61,12 +61,12 @@ namespace O_NeilloGame_v2
 
             //check if the move was legal
 
-            if (!GameLogic.checkForIllegalMove(game.gameBoardData, row, column, game.Player))
+            if (!GameLogic.CheckForIllegalMove(game.gameBoardData, row, column, game.Player))
             {
                 if (SpeechEnabled) { Say($"Player {(game.Player == 0 ? 2 : 1)} placed a tile at row {row} column {column}"); }
 
                 //check if any tiles need flipping and flip them
-                List<List<int>> tilesToFlip = GameLogic.processMove(game.gameBoardData, row, column, game.Player);
+                List<List<int>> tilesToFlip = GameLogic.ProcessMove(game.gameBoardData, row, column, game.Player);
                 foreach (List<int> tileToFlip in tilesToFlip)
                 {
                     game.gameBoardData[tileToFlip[0], tileToFlip[1]] = game.Player == 1 ? 1 : 0;
@@ -87,7 +87,7 @@ namespace O_NeilloGame_v2
                     //invert player again, and check if the next player has no valid moves
                     if (InvertPlayer() == -1 || Convert.ToInt32(labelPlayer1TokenCount.Text) == 0 || Convert.ToInt32(labelPlayer2TokenCount.Text) == 0)
                     {
-                        game.gameOver(Convert.ToInt32(labelPlayer1TokenCount.Text), Convert.ToInt32(labelPlayer2TokenCount.Text));
+                        game.GameOver(Convert.ToInt32(labelPlayer1TokenCount.Text), Convert.ToInt32(labelPlayer2TokenCount.Text));
                     }
                 }
 
@@ -171,7 +171,7 @@ namespace O_NeilloGame_v2
                 labelPlayer2ToPlay.Enabled = false;
             }
             //check if the new player has a valid move available or not
-            if (!GameLogic.checkForValidMove(game.gameBoardData, game.Player))
+            if (!GameLogic.CheckForValidMove(game.gameBoardData, game.Player))
             {
                 //if there are no valid moves
                 return -1;

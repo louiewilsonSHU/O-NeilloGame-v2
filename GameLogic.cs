@@ -50,14 +50,10 @@ namespace O_NeilloGame_v2
         /// <param name="column">Column of the move</param>
         /// <param name="player">Current player number, 1 or 0</param>
         /// <returns>true --> illegal move, false --> legal move</returns>
-        internal static bool checkForIllegalMove(int[,] board, int row, int column, int player)
+        internal static bool CheckForIllegalMove(int[,] board, int row, int column, int player)
         {
             //take a note of the inverse of the current player, i.e., the player who did not make the move
             int inversePlayer = player == 1 ? 0 : 1;
-
-            //two variables used in the while loops to check the move
-            int rowCounter = row;
-            int columnCounter = column;
 
             //check the 8 possibilities for any adjacent 10 tiles
             //1 - north of move
@@ -65,8 +61,72 @@ namespace O_NeilloGame_v2
             //etc
 
             //possibility 1
-            rowCounter = row - 1;
-            columnCounter = column;
+            if (!CheckForValidMovePossibility1(board, row, column, player, inversePlayer))
+            {
+                return false;
+            }
+
+            //possibility 2
+            if (!CheckForValidMovePossibility2(board, row, column, player, inversePlayer))
+            {
+                return false;
+            }
+
+            //possibility 3
+            if (!CheckForValidMovePossibility3(board, row, column, player, inversePlayer))
+            {
+                return false;
+            }
+
+            //possibility 4
+            if (!CheckForValidMovePossibility4(board, row, column, player, inversePlayer))
+            {
+                return false;
+            }
+
+            //possibility 5
+            if (!CheckForValidMovePossibility5(board, row, column, player, inversePlayer))
+            {
+                return false;
+            }
+
+            //possibility 6
+            if (!CheckForValidMovePossibility6(board, row, column, player, inversePlayer))
+            {
+                return false;
+            }
+
+            //possibility 7
+            if (!CheckForValidMovePossibility7(board, row, column, player, inversePlayer))
+            {
+                return false;
+            }
+
+            //possibility 8
+            if (!CheckForValidMovePossibility8(board, row, column, player, inversePlayer))
+            {
+                return false;
+            }
+
+            //if none of the above conditions were met, return true
+            return true;
+        }
+
+        /// <summary>
+        /// Check if possibility 1 contains a valid move
+        /// </summary>
+        /// <param name="board">The game board array, before the move was made (i.e., without the new tile)</param>
+        /// <param name="row">Row of the move</param>
+        /// <param name="column">Column of the move</param>
+        /// <param name="player">Current player number, 1 or 0</param>
+        /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
+        /// <returns>true --> illegal move, false --> legal move</returns>
+        static bool CheckForValidMovePossibility1(int[,] board, int row, int column, int player, int inversePlayer)
+        {
+            //possibility 1
+            //two variables used in the while loops to check the move
+            int rowCounter = row - 1;
+            int columnCounter = column;
             try
             {
                 while (board[rowCounter, columnCounter] == inversePlayer)
@@ -77,12 +137,26 @@ namespace O_NeilloGame_v2
                     }
                     rowCounter--;
                 }
+                return true;
             }
-            catch (Exception) { } //if the end of the board was reached, continue
+            catch (Exception) { return true; } //if the end of the board was reached, continue to next possibility
+        }
 
+        /// <summary>
+        /// Check if possibility 2 contains a valid move
+        /// </summary>
+        /// <param name="board">The game board array, before the move was made (i.e., without the new tile)</param>
+        /// <param name="row">Row of the move</param>
+        /// <param name="column">Column of the move</param>
+        /// <param name="player">Current player number, 1 or 0</param>
+        /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
+        /// <returns>true --> illegal move, false --> legal move</returns>
+        static bool CheckForValidMovePossibility2(int[,] board, int row, int column, int player, int inversePlayer)
+        {
             //possibility 2
-            rowCounter = row - 1;
-            columnCounter = column + 1;
+            //two variables used in the while loops to check the move
+            int rowCounter = row - 1;
+            int columnCounter = column + 1;
             try
             {
                 while (board[rowCounter, columnCounter] == inversePlayer)
@@ -94,12 +168,26 @@ namespace O_NeilloGame_v2
                     rowCounter--;
                     columnCounter++;
                 }
+                return true;
             }
-            catch (Exception) { } //if the end of the board was reached, continue
+            catch (Exception) { return true; } //if the end of the board was reached, continue
+        }
 
+        /// <summary>
+        /// Check if possibility 3 contains a valid move
+        /// </summary>
+        /// <param name="board">The game board array, before the move was made (i.e., without the new tile)</param>
+        /// <param name="row">Row of the move</param>
+        /// <param name="column">Column of the move</param>
+        /// <param name="player">Current player number, 1 or 0</param>
+        /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
+        /// <returns>true --> illegal move, false --> legal move</returns>
+        static bool CheckForValidMovePossibility3(int[,] board, int row, int column, int player, int inversePlayer)
+        {
             //possibility 3
-            rowCounter = row;
-            columnCounter = column + 1;
+            //two variables used in the while loops to check the move
+            int rowCounter = row;
+            int columnCounter = column + 1;
             try
             {
                 while (board[rowCounter, columnCounter] == inversePlayer)
@@ -110,12 +198,26 @@ namespace O_NeilloGame_v2
                     }
                     columnCounter++;
                 }
+                return true;
             }
-            catch (Exception) { } //if the end of the board was reached, continue
+            catch (Exception) { return true; } //if the end of the board was reached, continue
+        }
 
+        /// <summary>
+        /// Check if possibility 4 contains a valid move
+        /// </summary>
+        /// <param name="board">The game board array, before the move was made (i.e., without the new tile)</param>
+        /// <param name="row">Row of the move</param>
+        /// <param name="column">Column of the move</param>
+        /// <param name="player">Current player number, 1 or 0</param>
+        /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
+        /// <returns>true --> illegal move, false --> legal move</returns>
+        static bool CheckForValidMovePossibility4(int[,] board, int row, int column, int player, int inversePlayer)
+        {
             //possibility 4
-            rowCounter = row + 1;
-            columnCounter = column + 1;
+            //two variables used in the while loops to check the move
+            int rowCounter = row + 1;
+            int columnCounter = column + 1;
             try
             {
                 while (board[rowCounter, columnCounter] == inversePlayer)
@@ -127,12 +229,26 @@ namespace O_NeilloGame_v2
                     rowCounter++;
                     columnCounter++;
                 }
+                return true;
             }
-            catch (Exception) { } //if the end of the board was reached, continue
+            catch (Exception) { return true; } //if the end of the board was reached, continue
+        }
 
+        /// <summary>
+        /// Check if possibility 5 contains a valid move
+        /// </summary>
+        /// <param name="board">The game board array, before the move was made (i.e., without the new tile)</param>
+        /// <param name="row">Row of the move</param>
+        /// <param name="column">Column of the move</param>
+        /// <param name="player">Current player number, 1 or 0</param>
+        /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
+        /// <returns>true --> illegal move, false --> legal move</returns>
+        static bool CheckForValidMovePossibility5(int[,] board, int row, int column, int player, int inversePlayer)
+        {
             //possibility 5
-            rowCounter = row + 1;
-            columnCounter = column;
+            //two variables used in the while loops to check the move
+            int rowCounter = row + 1;
+            int columnCounter = column;
             try
             {
                 while (board[rowCounter, columnCounter] == inversePlayer)
@@ -143,12 +259,26 @@ namespace O_NeilloGame_v2
                     }
                     rowCounter++;
                 }
+                return true;
             }
-            catch (Exception) { } //if the end of the board was reached, continue
+            catch (Exception) { return true; } //if the end of the board was reached, continue
+        }
 
+        /// <summary>
+        /// Check if possibility 6 contains a valid move
+        /// </summary>
+        /// <param name="board">The game board array, before the move was made (i.e., without the new tile)</param>
+        /// <param name="row">Row of the move</param>
+        /// <param name="column">Column of the move</param>
+        /// <param name="player">Current player number, 1 or 0</param>
+        /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
+        /// <returns>true --> illegal move, false --> legal move</returns>
+        static bool CheckForValidMovePossibility6(int[,] board, int row, int column, int player, int inversePlayer)
+        {
             //possibility 6
-            rowCounter = row + 1;
-            columnCounter = column - 1;
+            //two variables used in the while loops to check the move
+            int rowCounter = row + 1;
+            int columnCounter = column - 1;
             try
             {
                 while (board[rowCounter, columnCounter] == inversePlayer)
@@ -160,15 +290,29 @@ namespace O_NeilloGame_v2
                     rowCounter++;
                     columnCounter--;
                 }
+                return true;
             }
-            catch (Exception) { } //if the end of the board was reached, continue
+            catch (Exception) { return true; } //if the end of the board was reached, continue
+        }
 
+        /// <summary>
+        /// Check if possibility 7 contains a valid move
+        /// </summary>
+        /// <param name="board">The game board array, before the move was made (i.e., without the new tile)</param>
+        /// <param name="row">Row of the move</param>
+        /// <param name="column">Column of the move</param>
+        /// <param name="player">Current player number, 1 or 0</param>
+        /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
+        /// <returns>true --> illegal move, false --> legal move</returns>
+        static bool CheckForValidMovePossibility7(int[,] board, int row, int column, int player, int inversePlayer)
+        {
             //possibility 7
-            rowCounter = row;
-            columnCounter = column - 1;
+            //two variables used in the while loops to check the move
+            int rowCounter = row;
+            int columnCounter = column - 1;
             try
             {
-                while (board[rowCounter, columnCounter] != 10 && board[row, column - 1] != player)
+                while (board[rowCounter, columnCounter] != 10 && board[row, column - 1] == inversePlayer)
                 {
                     if (board[rowCounter, columnCounter - 1] == player)
                     {
@@ -176,15 +320,29 @@ namespace O_NeilloGame_v2
                     }
                     columnCounter--;
                 }
+                return true;
             }
-            catch (Exception) { } //if the end of the board was reached, continue
+            catch (Exception) { return true; } //if the end of the board was reached, continue
+        }
 
+        /// <summary>
+        /// Check if possibility 8 contains a valid move
+        /// </summary>
+        /// <param name="board">The game board array, before the move was made (i.e., without the new tile)</param>
+        /// <param name="row">Row of the move</param>
+        /// <param name="column">Column of the move</param>
+        /// <param name="player">Current player number, 1 or 0</param>
+        /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
+        /// <returns>true --> illegal move, false --> legal move</returns>
+        static bool CheckForValidMovePossibility8(int[,] board, int row, int column, int player, int inversePlayer)
+        {
             //possibility 8
-            rowCounter = row - 1;
-            columnCounter = column - 1;
+            //two variables used in the while loops to check the move
+            int rowCounter = row - 1;
+            int columnCounter = column - 1;
             try
             {
-                while (board[rowCounter, columnCounter] != 10 && board[row - 1, column - 1] != player)
+                while (board[rowCounter, columnCounter] != 10 && board[row - 1, column - 1] == inversePlayer)
                 {
                     if (board[rowCounter - 1, columnCounter - 1] == player)
                     {
@@ -193,11 +351,9 @@ namespace O_NeilloGame_v2
                     rowCounter--;
                     columnCounter--;
                 }
+                return true;
             }
-            catch (Exception) { } //if the end of the board was reached, continue
-
-            //if none of the above conditions were met, return true
-            return true;
+            catch (Exception) { return true; } //if the end of the board was reached, continue
         }
 
         /// <summary>
@@ -208,7 +364,7 @@ namespace O_NeilloGame_v2
         /// <param name="column">Column of the move</param>
         /// <param name="player">Current player number, 1 or 0</param>
         /// <returns>A 2-dimensional list of board tiles to change to the player's tile colour</returns>
-        internal static List<List<int>> processMove(int[,] board, int row, int column, int player)
+        internal static List<List<int>> ProcessMove(int[,] board, int row, int column, int player)
         {
             //run through each of the eight possibilities and flip any relevant tiles (numbered the same as above)
 
@@ -379,7 +535,7 @@ namespace O_NeilloGame_v2
         /// <param name="gameBoardData">Game board array</param>
         /// <param name="player">Current player number</param>
         /// <returns>Boolean value, corresponding with if the player has any valid moves available</returns>
-        internal static bool checkForValidMove(int[,] gameBoardData, int player)
+        internal static bool CheckForValidMove(int[,] gameBoardData, int player)
         {
             //run through each tile on the board, and only process "10" tiles
             for (int row = 0; row < 8; row++)
@@ -390,7 +546,7 @@ namespace O_NeilloGame_v2
                     {
                         //assume that the player goes here, check if this would be a legal move
                         //(no actual move is made here, just re-using the illegal move checking method code)
-                        if (!checkForIllegalMove(gameBoardData, row, column, player))
+                        if (!CheckForIllegalMove(gameBoardData, row, column, player))
                         {
                             //if any of the potential moves made are legal, then the player has a valid move
                             return true;
@@ -407,7 +563,7 @@ namespace O_NeilloGame_v2
         /// </summary>
         /// <param name="player1NumberOfTokens">Player 1 number of tokens</param>
         /// <param name="player2NumberOfTokens">Player 2 number of tokens</param>
-         internal void gameOver(int player1NumberOfTokens, int player2NumberOfTokens)
+        internal void GameOver(int player1NumberOfTokens, int player2NumberOfTokens)
         {
             //set gameInProgress to false
             gameInProgress = false;
