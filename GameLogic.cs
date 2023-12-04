@@ -61,49 +61,49 @@ namespace O_NeilloGame_v2
             //etc
 
             //possibility 1
-            if (!CheckForValidMovePossibility1(board, row, column, player, inversePlayer))
+            if (!CheckForIllegalMovePossibility1(board, row, column, player, inversePlayer))
             {
                 return false;
             }
 
             //possibility 2
-            if (!CheckForValidMovePossibility2(board, row, column, player, inversePlayer))
+            if (!CheckForIllegalMovePossibility2(board, row, column, player, inversePlayer))
             {
                 return false;
             }
 
             //possibility 3
-            if (!CheckForValidMovePossibility3(board, row, column, player, inversePlayer))
+            if (!CheckForIllegalMovePossibility3(board, row, column, player, inversePlayer))
             {
                 return false;
             }
 
             //possibility 4
-            if (!CheckForValidMovePossibility4(board, row, column, player, inversePlayer))
+            if (!CheckForIllegalMovePossibility4(board, row, column, player, inversePlayer))
             {
                 return false;
             }
 
             //possibility 5
-            if (!CheckForValidMovePossibility5(board, row, column, player, inversePlayer))
+            if (!CheckForIllegalMovePossibility5(board, row, column, player, inversePlayer))
             {
                 return false;
             }
 
             //possibility 6
-            if (!CheckForValidMovePossibility6(board, row, column, player, inversePlayer))
+            if (!CheckForIllegalMovePossibility6(board, row, column, player, inversePlayer))
             {
                 return false;
             }
 
             //possibility 7
-            if (!CheckForValidMovePossibility7(board, row, column, player, inversePlayer))
+            if (!CheckForIllegalMovePossibility7(board, row, column, player, inversePlayer))
             {
                 return false;
             }
 
             //possibility 8
-            if (!CheckForValidMovePossibility8(board, row, column, player, inversePlayer))
+            if (!CheckForIllegalMovePossibility8(board, row, column, player, inversePlayer))
             {
                 return false;
             }
@@ -121,7 +121,7 @@ namespace O_NeilloGame_v2
         /// <param name="player">Current player number, 1 or 0</param>
         /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
         /// <returns>true --> illegal move, false --> legal move</returns>
-        static bool CheckForValidMovePossibility1(int[,] board, int row, int column, int player, int inversePlayer)
+        private static bool CheckForIllegalMovePossibility1(int[,] board, int row, int column, int player, int inversePlayer)
         {
             //possibility 1
             //two variables used in the while loops to check the move
@@ -151,7 +151,7 @@ namespace O_NeilloGame_v2
         /// <param name="player">Current player number, 1 or 0</param>
         /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
         /// <returns>true --> illegal move, false --> legal move</returns>
-        static bool CheckForValidMovePossibility2(int[,] board, int row, int column, int player, int inversePlayer)
+        private static bool CheckForIllegalMovePossibility2(int[,] board, int row, int column, int player, int inversePlayer)
         {
             //possibility 2
             //two variables used in the while loops to check the move
@@ -182,7 +182,7 @@ namespace O_NeilloGame_v2
         /// <param name="player">Current player number, 1 or 0</param>
         /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
         /// <returns>true --> illegal move, false --> legal move</returns>
-        static bool CheckForValidMovePossibility3(int[,] board, int row, int column, int player, int inversePlayer)
+        private static bool CheckForIllegalMovePossibility3(int[,] board, int row, int column, int player, int inversePlayer)
         {
             //possibility 3
             //two variables used in the while loops to check the move
@@ -212,7 +212,7 @@ namespace O_NeilloGame_v2
         /// <param name="player">Current player number, 1 or 0</param>
         /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
         /// <returns>true --> illegal move, false --> legal move</returns>
-        static bool CheckForValidMovePossibility4(int[,] board, int row, int column, int player, int inversePlayer)
+        private static bool CheckForIllegalMovePossibility4(int[,] board, int row, int column, int player, int inversePlayer)
         {
             //possibility 4
             //two variables used in the while loops to check the move
@@ -243,7 +243,7 @@ namespace O_NeilloGame_v2
         /// <param name="player">Current player number, 1 or 0</param>
         /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
         /// <returns>true --> illegal move, false --> legal move</returns>
-        static bool CheckForValidMovePossibility5(int[,] board, int row, int column, int player, int inversePlayer)
+        private static bool CheckForIllegalMovePossibility5(int[,] board, int row, int column, int player, int inversePlayer)
         {
             //possibility 5
             //two variables used in the while loops to check the move
@@ -273,7 +273,7 @@ namespace O_NeilloGame_v2
         /// <param name="player">Current player number, 1 or 0</param>
         /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
         /// <returns>true --> illegal move, false --> legal move</returns>
-        static bool CheckForValidMovePossibility6(int[,] board, int row, int column, int player, int inversePlayer)
+        private static bool CheckForIllegalMovePossibility6(int[,] board, int row, int column, int player, int inversePlayer)
         {
             //possibility 6
             //two variables used in the while loops to check the move
@@ -304,7 +304,7 @@ namespace O_NeilloGame_v2
         /// <param name="player">Current player number, 1 or 0</param>
         /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
         /// <returns>true --> illegal move, false --> legal move</returns>
-        static bool CheckForValidMovePossibility7(int[,] board, int row, int column, int player, int inversePlayer)
+        private static bool CheckForIllegalMovePossibility7(int[,] board, int row, int column, int player, int inversePlayer)
         {
             //possibility 7
             //two variables used in the while loops to check the move
@@ -334,7 +334,7 @@ namespace O_NeilloGame_v2
         /// <param name="player">Current player number, 1 or 0</param>
         /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
         /// <returns>true --> illegal move, false --> legal move</returns>
-        static bool CheckForValidMovePossibility8(int[,] board, int row, int column, int player, int inversePlayer)
+        private static bool CheckForIllegalMovePossibility8(int[,] board, int row, int column, int player, int inversePlayer)
         {
             //possibility 8
             //two variables used in the while loops to check the move
@@ -435,7 +435,7 @@ namespace O_NeilloGame_v2
         /// <param name="player">Current player number, 1 or 0</param>
         /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
         /// <returns>2-d list of tiles to flip</returns>
-        static List<List<int>> ProcessMovePossibility1(int[,] board, int row, int column, int player, int inversePlayer)
+        private static List<List<int>> ProcessMovePossibility1(int[,] board, int row, int column, int player, int inversePlayer)
         {
             //declare local list to add tiles to
             List<List<int>> tilesToChange = new List<List<int>>();
@@ -470,7 +470,7 @@ namespace O_NeilloGame_v2
         /// <param name="player">Current player number, 1 or 0</param>
         /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
         /// <returns>2-d list of tiles to flip</returns>
-        static List<List<int>> ProcessMovePossibility2(int[,] board, int row, int column, int player, int inversePlayer)
+        private static List<List<int>> ProcessMovePossibility2(int[,] board, int row, int column, int player, int inversePlayer)
         {
             //declare local list to add tiles to
             List<List<int>> tilesToChange = new List<List<int>>();
@@ -506,7 +506,7 @@ namespace O_NeilloGame_v2
         /// <param name="player">Current player number, 1 or 0</param>
         /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
         /// <returns>2-d list of tiles to flip</returns>
-        static List<List<int>> ProcessMovePossibility3(int[,] board, int row, int column, int player, int inversePlayer)
+        private static List<List<int>> ProcessMovePossibility3(int[,] board, int row, int column, int player, int inversePlayer)
         {
             //declare local list to add tiles to
             List<List<int>> tilesToChange = new List<List<int>>();
@@ -541,7 +541,7 @@ namespace O_NeilloGame_v2
         /// <param name="player">Current player number, 1 or 0</param>
         /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
         /// <returns>2-d list of tiles to flip</returns>
-        static List<List<int>> ProcessMovePossibility4(int[,] board, int row, int column, int player, int inversePlayer)
+        private static List<List<int>> ProcessMovePossibility4(int[,] board, int row, int column, int player, int inversePlayer)
         {
             //declare local list to add tiles to
             List<List<int>> tilesToChange = new List<List<int>>();
@@ -577,7 +577,7 @@ namespace O_NeilloGame_v2
         /// <param name="player">Current player number, 1 or 0</param>
         /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
         /// <returns>2-d list of tiles to flip</returns>
-        static List<List<int>> ProcessMovePossibility5(int[,] board, int row, int column, int player, int inversePlayer)
+        private static List<List<int>> ProcessMovePossibility5(int[,] board, int row, int column, int player, int inversePlayer)
         {
             //declare local list to add tiles to
             List<List<int>> tilesToChange = new List<List<int>>();
@@ -612,7 +612,7 @@ namespace O_NeilloGame_v2
         /// <param name="player">Current player number, 1 or 0</param>
         /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
         /// <returns>2-d list of tiles to flip</returns>
-        static List<List<int>> ProcessMovePossibility6(int[,] board, int row, int column, int player, int inversePlayer)
+        private static List<List<int>> ProcessMovePossibility6(int[,] board, int row, int column, int player, int inversePlayer)
         {
             //declare local list to add tiles to
             List<List<int>> tilesToChange = new List<List<int>>();
@@ -648,7 +648,7 @@ namespace O_NeilloGame_v2
         /// <param name="player">Current player number, 1 or 0</param>
         /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
         /// <returns>2-d list of tiles to flip</returns>
-        static List<List<int>> ProcessMovePossibility7(int[,] board, int row, int column, int player, int inversePlayer)
+        private static List<List<int>> ProcessMovePossibility7(int[,] board, int row, int column, int player, int inversePlayer)
         {
             //declare local list to add tiles to
             List<List<int>> tilesToChange = new List<List<int>>();
@@ -683,7 +683,7 @@ namespace O_NeilloGame_v2
         /// <param name="player">Current player number, 1 or 0</param>
         /// <param name="inversePlayer">Inverse of current player, 1 or 0</param>
         /// <returns>2-d list of tiles to flip</returns>
-        static List<List<int>> ProcessMovePossibility8(int[,] board, int row, int column, int player, int inversePlayer)
+        private static List<List<int>> ProcessMovePossibility8(int[,] board, int row, int column, int player, int inversePlayer)
         {
             //declare local list to add tiles to
             List<List<int>> tilesToChange = new List<List<int>>();
