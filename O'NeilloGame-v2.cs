@@ -34,6 +34,19 @@ namespace O_NeilloGame_v2
         ///<summary> Event handler for if a game board tile was clicked </summary>
         private void GameTileClicked(object sender, EventArgs e)
         {
+            //if there is no game in progress then do not process the event handler, and tell the user
+            if (!game.GameInProgress)
+            { 
+                if (speechEnabled)
+                {
+                    Say("No game in progress.");
+                }
+                MessageBox.Show("No game in progress.");
+                return;
+            }
+
+            //if there is a game in progress, event handler continues to be processed
+            
             //get the row and column of the tile clicked
             int row = game.gameBoard.GetCurrentRowIndex(sender);
             int column = game.gameBoard.GetCurrentColumnIndex(sender);
